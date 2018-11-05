@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gocd-deployment
+  namespace: gocd
+  labels:
+    app: gocd
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gocd
+  template:
+    metadata:
+      labels:
+        app: gocd
+    spec:
+      containers:
+      - name: gocd
+        image: tcmoody716/gocd-server:latest
+        ports:
+        - containerPort: 8153
